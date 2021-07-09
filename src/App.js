@@ -27,7 +27,7 @@ export default function App() {
               className={selectedTab === label ? "is-active" : ""}
               onClick={() => setSelectedTab(label)}
             >
-              <a>react state</a>
+              <a>{label}</a>
             </li>
           ))}
         </ul>
