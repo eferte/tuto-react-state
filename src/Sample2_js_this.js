@@ -7,7 +7,8 @@ class Person {
     this.name = name;
   }
   sayHello() {
-    console.log(this.name);
+    console.log("Hello");
+    //console.log("Hello, my name is " + this.name);
   }
 }
 
@@ -19,7 +20,7 @@ export default function SampleThis() {
       <h1 className="title is-5">Sample 2 : This in Javascript</h1>
       <div>
         <button className="button" onClick={() => phil.sayHello()}>
-          First Click here
+          First Click here.
         </button>
         <button className="button" onClick={phil.sayHello}>
           Second Click here
