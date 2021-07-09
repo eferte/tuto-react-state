@@ -5,7 +5,8 @@ export default function SampleState() {
   const [value, setValue] = useState("");
 
   const handleChange = ({ target }) => {
-    setValue(target.value.toUpperCase());
+    setValue(target.value);
+    //setValue(target.value.toUpperCase());
   };
 
   return (
