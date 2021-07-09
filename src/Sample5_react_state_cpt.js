@@ -1,18 +1,20 @@
 import { useState } from "react";
 import LogNbRenders from "./LogNbRenders";
 
+/**
+ *
+ * Le problème des closures avec plusieurs renders en React.
+ *
+ */
+
 export default function SampleStateCpt() {
-  const [value, setValue] = useState("");
   const [cpt, setCpt] = useState(0);
 
-  const handleChange = ({ target }) => {
-    setValue(target.value.toUpperCase());
-  };
   const handleBtnClick = () => {
     setCpt(cpt + 1);
-    /*setTimeout(() => {
+    setTimeout(() => {
       setCpt(cpt + 1);
-    }, 2000);*/
+    }, 2000);
 
     /*setTimeout(() => {
       setCpt(cpt => cpt + 1);
@@ -22,17 +24,9 @@ export default function SampleStateCpt() {
     <div className="sample sampleState">
       <h1 className="title is-5">Sample 5 : Have a counter</h1>
       <button className="button" onClick={handleBtnClick}>
-        Compteur
+        Compteur +2
       </button>
-      <div>Vous avez cliqué : {cpt} fois</div>
-      <div>
-        <input
-          className="input"
-          name="test1"
-          value={value}
-          onChange={handleChange}
-        />
-      </div>
+      <div>Valeur du compteur : {cpt}</div>
 
       <LogNbRenders />
     </div>

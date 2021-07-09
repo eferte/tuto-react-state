@@ -1,6 +1,13 @@
 import { useState } from "react";
 import LogNbRenders from "./LogNbRenders";
 
+/**
+ *
+ * Le this en javascript ne fonctionne pas comme
+ * le this des autres langages habituels
+ *
+ */
+
 class Person {
   name;
   constructor(name) {
@@ -24,6 +31,9 @@ export default function SampleThis() {
         </button>
         <button className="button" onClick={phil.sayHello}>
           Second Click here
+        </button>
+        <button className="button" onClick={phil.sayHello.bind(phil)}>
+          Third Click here
         </button>
       </div>
       <LogNbRenders />

@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import LogNbRenders from "./LogNbRenders";
 
+/**
+ *
+ * Rappels sur le hook useEffect
+ * En particulier, attention au tableau des dépendances
+ *
+ */
+
 export default function SampleEffect() {
   const [duration, setDuration] = useState(0);
 
@@ -9,7 +16,6 @@ export default function SampleEffect() {
     let start = new Date();
     setTimeout(() => {
       const newDuration = new Date() - start;
-
       setDuration(newDuration);
     }, 5000);
   }, []);

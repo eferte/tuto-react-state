@@ -1,6 +1,11 @@
 import { useState } from "react";
 import LogNbRenders from "./LogNbRenders";
 
+/**
+ *
+ * Rappel sur le hook useState
+ *
+ */
 export default function SampleState() {
   const [value, setValue] = useState("");
 

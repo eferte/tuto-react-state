@@ -1,29 +1,42 @@
 import { useState } from "react";
 import LogNbRenders from "./LogNbRenders";
 
+/**
+ *
+ * Les closures en Javazscript
+ *
+ */
+
+function makeCompteur() {
+  let compteur = 0;
+  return function () {
+    compteur++;
+    console.log(compteur);
+  };
+}
+
+const increment = makeCompteur();
+// ici makeCompteur n'est plus utilisé,
+// le moteur js peut donc supprimer la fonction
+// de la mémoire ainsi que toutes les variables
+// allouées dans la fonction comme la variable "compteur".
+// Vraiment ???
+increment();
+increment();
+increment();
+
 export default function SampleClosure() {
   const [userDuration, setUserDuration] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [timerStarted, setTimerStarted] = useState(false);
 
   const handleChange = ({ target }) => {
     setUserDuration(parseInt(target.value, 0));
   };
 
   const handleTimerStart = () => {
-    if (timerStarted) {
-      return;
-    }
-
-    setDuration(userDuration);
-    let start = new Date();
-    setTimerStarted(true);
     setTimeout(() => {
-      const newDuration = new Date() - start;
-
-      setDuration(newDuration + userDuration);
-      setTimerStarted(false);
-    }, 4000);
+      setDuration(userDuration);
+    }, 5000);
   };
 
   return (
@@ -40,10 +53,10 @@ export default function SampleClosure() {
         />
       </div>
       <div>
-        Durée totale : <b>{duration}</b> (user duration + timer duration)
+        User number: <b>{duration}</b>
       </div>
       <button className="button" onClick={handleTimerStart}>
-        {timerStarted ? "Running..." : "Start Timer"}
+        Start Timer
       </button>
       <LogNbRenders />
     </div>
