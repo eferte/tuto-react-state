@@ -5,6 +5,11 @@ import LogNbRenders from "./LogNbRenders";
  *
  * Rappel sur le hook useState
  *
+ * Rappel : Un composant React est une simple fonction
+ *          A chaque render, la fonction est appelée
+ * Que se passe-t-il sans useState
+ * Comment fonctionne le useState (en interne)
+ *
  */
 export default function SampleState() {
   const [value, setValue] = useState("");

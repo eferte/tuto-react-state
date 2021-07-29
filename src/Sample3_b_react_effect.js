@@ -6,11 +6,15 @@ import LogNbRenders from "./LogNbRenders";
  * Rappels sur le hook useEffect
  * En particulier, attention au tableau des dépendances
  *
+ *    --> que se passe-t-il si on utilise la fonction getName ?
+ *    --> résoudre avec useCallback
+ *
  */
-
 export default function SampleEffectB() {
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
+
+  //const getName = () => (name ? "?name=" + name : "");
 
   useEffect(() => {
     (async () => {

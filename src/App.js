@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState, lazy, Suspense } from "react";
+
 const SampleStateInput = lazy(() => import("./Sample1_react_state_input"));
 const SampleThis = lazy(() => import("./Sample2_js_this"));
 const SampleEffectA = lazy(() => import("./Sample3_a_react_effect"));
@@ -12,7 +13,7 @@ const tabs = [
   { label: "react state", component: <SampleStateInput /> },
   { label: "this", component: <SampleThis /> },
   {
-    label: "react effect A",
+    label: "react effect",
     component: (
       <div>
         <SampleEffectA /> <SampleEffectB /> <SampleEffectC />
