@@ -1,12 +1,12 @@
 import "./styles.css";
-import { useState } from "react";
-import SampleStateInput from "./Sample1_react_state_input";
-import SampleThis from "./Sample2_js_this";
-import SampleEffectA from "./Sample3_a_react_effect";
-import SampleEffectB from "./Sample3_b_react_effect";
-import SampleEffectC from "./Sample3_c_react_effect";
-import SampleClosure from "./Sample4_js_closure";
-import SampleStateCpt from "./Sample5_react_state_cpt";
+import { useState, lazy, Suspense } from "react";
+const SampleStateInput = lazy(() => import("./Sample1_react_state_input"));
+const SampleThis = lazy(() => import("./Sample2_js_this"));
+const SampleEffectA = lazy(() => import("./Sample3_a_react_effect"));
+const SampleEffectB = lazy(() => import("./Sample3_b_react_effect"));
+const SampleEffectC = lazy(() => import("./Sample3_c_react_effect"));
+const SampleClosure = lazy(() => import("./Sample4_js_closure"));
+const SampleStateCpt = lazy(() => import("./Sample5_react_state_cpt"));
 
 const tabs = [
   { label: "react state", component: <SampleStateInput /> },
@@ -42,11 +42,13 @@ export default function App() {
         </ul>
       </div>
       <div>
-        {
-          tabs
-            .filter(({ label }) => label === selectedTab)
-            .map(({ component }) => component)[0]
-        }
+        <Suspense fallback={<div />}>
+          {
+            tabs
+              .filter(({ label }) => label === selectedTab)
+              .map(({ component }) => component)[0]
+          }
+        </Suspense>
       </div>
     </div>
   );
