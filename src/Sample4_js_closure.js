@@ -3,7 +3,7 @@ import LogNbRenders from "./LogNbRenders";
 
 export default function SampleClosure() {
   const [userDuration, setUserDuration] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState("?");
   const [timerStarted, setTimerStarted] = useState(false);
 
   const handleChange = ({ target }) => {
@@ -15,15 +15,14 @@ export default function SampleClosure() {
       return;
     }
 
-    setDuration(userDuration);
+    setDuration("?");
     let start = new Date();
     setTimerStarted(true);
     setTimeout(() => {
       const newDuration = new Date() - start;
-
       setDuration(newDuration + userDuration);
       setTimerStarted(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
@@ -42,10 +41,10 @@ export default function SampleClosure() {
       </div>
       <div style={{ marginTop: 20 }}>
         Durée totale : <b>{duration}</b> (user duration(={userDuration}) + timer
-        duration(&#8771;3000))
+        duration(&#8771;5000))
       </div>
       <button className="button" onClick={handleTimerStart}>
-        {timerStarted ? "Running..." : "Start Timer vaut à peu près 3000"}
+        {timerStarted ? "Running..." : "Start Timer vaut à peu près 5000"}
       </button>
       <LogNbRenders />
     </div>

@@ -2,14 +2,23 @@ import "./styles.css";
 import { useState } from "react";
 import SampleStateInput from "./Sample1_react_state_input";
 import SampleThis from "./Sample2_js_this";
-import SampleEffect from "./Sample3_react_effect";
+import SampleEffectA from "./Sample3_a_react_effect";
+import SampleEffectB from "./Sample3_b_react_effect";
+import SampleEffectC from "./Sample3_c_react_effect";
 import SampleClosure from "./Sample4_js_closure";
 import SampleStateCpt from "./Sample5_react_state_cpt";
 
 const tabs = [
   { label: "react state", component: <SampleStateInput /> },
   { label: "this", component: <SampleThis /> },
-  { label: "react effect", component: <SampleEffect /> },
+  {
+    label: "react effect A",
+    component: (
+      <div>
+        <SampleEffectA /> <SampleEffectB /> <SampleEffectC />
+      </div>
+    )
+  },
   { label: "closure", component: <SampleClosure /> },
   { label: "closure effect", component: <SampleStateCpt /> }
 ];

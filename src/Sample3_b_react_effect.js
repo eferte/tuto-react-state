@@ -8,30 +8,48 @@ import LogNbRenders from "./LogNbRenders";
  *
  */
 
-export default function SampleEffect() {
-  const [duration, setDuration] = useState(0);
+export default function SampleEffectB() {
+  const [name, setName] = useState("");
+  const [users, setUsers] = useState([]);
 
-  // penser fonction pure... effets de bords
   useEffect(() => {
-    let start = new Date();
-    setTimeout(() => {
-      const newDuration = new Date() - start;
-      setDuration(newDuration);
-    }, 5000);
-  }, []);
-
-  const handleTimerReset = () => {};
+    (async () => {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users${
+          name ? "?name=" + name : ""
+        }`
+      );
+      const users = await response.json();
+      setUsers(users);
+    })();
+  }, [name]);
 
   return (
     <div className="sample sampleState">
       <h1 className="title is-5">Sample 3-B : Effects</h1>
 
-      <div>
-        Durée : <b>{duration}</b>
+      <div className="field" style={{ textAlign: "left" }}>
+        <label className="label" htmlFor="namefilter">
+          Filter by name
+        </label>
+        <div className="control">
+          <input
+            name="namefilter"
+            className="input"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
       </div>
-      <button className="button" onClick={handleTimerReset}>
-        Reset Timer
-      </button>
+
+      <div>
+        <label className="label" htmlFor="namefilter">
+          Users:
+        </label>
+        {users && users.map((user) => <div key={user.id}>{user.name}</div>)}
+      </div>
+
       <LogNbRenders />
     </div>
   );

@@ -8,13 +8,17 @@ import LogNbRenders from "./LogNbRenders";
  *
  */
 
-export default function SampleEffect() {
+export default function SampleEffectA() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users").then((users) =>
-      setUsers(users)
-    );
+    (async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      const users = await response.json();
+      setUsers(users);
+    })(); // SEF
   }, []);
 
   return (
@@ -22,9 +26,10 @@ export default function SampleEffect() {
       <h1 className="title is-5">Sample 3-A : Effects</h1>
 
       <div>
-        {users.map((user) => (
-          <div key={user.id}>{user.name}</div>
-        ))}
+        <label className="label" htmlFor="namefilter">
+          Users:
+        </label>
+        {users && users.map((user) => <div key={user.id}>{user.name}</div>)}
       </div>
 
       <LogNbRenders />
