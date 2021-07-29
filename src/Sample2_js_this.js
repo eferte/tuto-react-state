@@ -12,10 +12,14 @@ class Person {
   name;
   constructor(name) {
     this.name = name;
+    // bind ?
   }
   sayHello() {
     console.log("Hello");
     //console.log("Hello, my name is " + this.name);
+    /* setTimeout(function () {
+      console.log("My name is " + this.name);
+    }, 500); */
   }
 }
 
@@ -27,13 +31,10 @@ export default function SampleThis() {
       <h1 className="title is-5">Sample 2 : This in Javascript</h1>
       <div>
         <button className="button" onClick={() => phil.sayHello()}>
-          First Click here.
+          1 Click here.
         </button>
         <button className="button" onClick={phil.sayHello}>
-          Second Click here
-        </button>
-        <button className="button" onClick={phil.sayHello.bind(phil)}>
-          Third Click here
+          2 Click here
         </button>
       </div>
       <LogNbRenders />

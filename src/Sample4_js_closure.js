@@ -1,42 +1,29 @@
 import { useState } from "react";
 import LogNbRenders from "./LogNbRenders";
 
-/**
- *
- * Les closures en Javazscript
- *
- */
-
-function makeCompteur() {
-  let compteur = 0;
-  return function () {
-    compteur++;
-    console.log(compteur);
-  };
-}
-
-const increment = makeCompteur();
-// ici makeCompteur n'est plus utilisé,
-// le moteur js peut donc supprimer la fonction
-// de la mémoire ainsi que toutes les variables
-// allouées dans la fonction comme la variable "compteur".
-// Vraiment ???
-increment();
-increment();
-increment();
-
 export default function SampleClosure() {
   const [userDuration, setUserDuration] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [timerStarted, setTimerStarted] = useState(false);
 
   const handleChange = ({ target }) => {
     setUserDuration(parseInt(target.value, 0));
   };
 
   const handleTimerStart = () => {
+    if (timerStarted) {
+      return;
+    }
+
+    setDuration(userDuration);
+    let start = new Date();
+    setTimerStarted(true);
     setTimeout(() => {
-      setDuration(userDuration);
-    }, 5000);
+      const newDuration = new Date() - start;
+
+      setDuration(newDuration + userDuration);
+      setTimerStarted(false);
+    }, 3000);
   };
 
   return (
@@ -44,6 +31,7 @@ export default function SampleClosure() {
       <h1 className="title is-5">Sample 4 : Closures</h1>
 
       <div>
+        <label>User duration</label>
         <input
           className="input"
           name="test1"
@@ -52,11 +40,12 @@ export default function SampleClosure() {
           onChange={handleChange}
         />
       </div>
-      <div>
-        User number: <b>{duration}</b>
+      <div style={{ marginTop: 20 }}>
+        Durée totale : <b>{duration}</b> (user duration(={userDuration}) + timer
+        duration(&#8771;3000))
       </div>
       <button className="button" onClick={handleTimerStart}>
-        Start Timer
+        {timerStarted ? "Running..." : "Start Timer vaut à peu près 3000"}
       </button>
       <LogNbRenders />
     </div>

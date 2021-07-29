@@ -24,7 +24,7 @@ export default function SampleEffect() {
 
   return (
     <div className="sample sampleState">
-      <h1 className="title is-5">Sample 3 : Effects</h1>
+      <h1 className="title is-5">Sample 3-B : Effects</h1>
 
       <div>
         Durée : <b>{duration}</b>
