@@ -13,18 +13,19 @@ class Person {
   constructor(name) {
     this.name = name;
     // bind ?
+    //this.sayHello = this.sayHello.bind(this);
   }
   sayHello() {
-    console.log("Hello");
-    //console.log("Hello, my name is " + this.name);
-    /* setTimeout(function () {
-      console.log("My name is " + this.name);
-    }, 500); */
+    console.log("Hsello");
+    /*console.log("Hello, my name is " + this.name);
+    setTimeout(() => {
+      console.log("Hello, my name is " + this.name);
+    }, 500);*/
   }
 }
 
-export default function SampleThis() {
-  const [phil] = useState(new Person("Philippe"));
+function SampleThis() {
+  const phil = new Person("Philippe");
 
   return (
     <div className="sample sampleState">
@@ -42,3 +43,5 @@ export default function SampleThis() {
     </div>
   );
 }
+
+export default SampleThis;

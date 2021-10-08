@@ -12,13 +12,13 @@ export default function SampleEffectA() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      const users = await response.json();
-      setUsers(users);
-    })(); // SEF
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        return response.json();
+      })
+      .then((users) => {
+        setUsers(users);
+      });
   }, []);
 
   return (

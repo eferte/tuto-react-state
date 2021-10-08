@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import LogNbRenders from "./LogNbRenders";
 
 /**
@@ -14,7 +14,7 @@ export default function SampleEffectB() {
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
 
-  //const getName = () => (name ? "?name=" + name : "");
+  //const getName = useCallback(() => (name ? "?name=" + name : ""), [name]);
 
   useEffect(() => {
     (async () => {

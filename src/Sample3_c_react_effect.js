@@ -11,16 +11,19 @@ import LogNbRenders from "./LogNbRenders";
 export default function SampleEffectC() {
   const [duration, setDuration] = useState(0);
 
-  // penser fonction pure... effets de bords
-  useEffect(() => {
+  const handleTimerReset = () => {
+    setDuration(0);
     let start = new Date();
     setTimeout(() => {
       const newDuration = new Date() - start;
       setDuration(newDuration);
     }, 5000);
-  }, []);
+  };
 
-  const handleTimerReset = () => {};
+  // componentDidMount equivalent
+  useEffect(() => {
+    handleTimerReset();
+  }, []);
 
   return (
     <div className="sample sampleState">

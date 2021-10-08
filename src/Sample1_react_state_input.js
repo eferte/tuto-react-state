@@ -11,13 +11,15 @@ import LogNbRenders from "./LogNbRenders";
  * Comment fonctionne le useState (en interne)
  *
  */
-export default function SampleState() {
+function SampleState() {
   const [value, setValue] = useState("");
 
   const handleChange = ({ target }) => {
-    setValue(target.value);
-    //setValue(target.value.toUpperCase());
+    //setValue(target.value);
+    setValue(target.value.toUpperCase());
   };
+
+  // traitement tres lents
 
   return (
     <div className="sample sampleState">
@@ -36,3 +38,4 @@ export default function SampleState() {
     </div>
   );
 }
+export default SampleState;

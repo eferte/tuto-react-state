@@ -12,13 +12,13 @@ export default function SampleStateCpt() {
 
   const handleBtnClick = () => {
     setCpt(cpt + 1);
-    setTimeout(() => {
+    /* setTimeout(() => {
       setCpt(cpt + 1);
-    }, 2000);
-
-    /*setTimeout(() => {
-      setCpt(cpt => cpt + 1);
     }, 2000);*/
+
+    setTimeout(() => {
+      setCpt((cpt) => cpt + 1);
+    }, 2000);
   };
   return (
     <div className="sample sampleState">
